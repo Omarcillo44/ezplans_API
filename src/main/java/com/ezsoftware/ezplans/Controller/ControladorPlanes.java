@@ -12,16 +12,5 @@ import java.util.List;
 @RequestMapping("/planes")
 public class ControladorPlanes {
 
-    @Autowired
-    private PlanesRepository planesRepository;
 
-    @GetMapping
-    public ResponseEntity<List<DatosPlanesUsuarioDashboard>> obtenerPlanesUsuario(
-            @RequestParam Integer idUsuario,
-            @RequestParam(required = false) Boolean soloCompletos,
-            @RequestParam(required = false) Boolean esAdmin
-    ) {
-        var planes = planesRepository.obtenerPlanesPorUsuario(idUsuario, soloCompletos, esAdmin);
-        return ResponseEntity.ok(planes);
-    }
 }

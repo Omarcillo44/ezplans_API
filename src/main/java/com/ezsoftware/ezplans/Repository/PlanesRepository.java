@@ -1,6 +1,7 @@
 package com.ezsoftware.ezplans.Repository;
 
 import com.ezsoftware.ezplans.Model.DTO.DatosPlanesUsuarioDashboard;
+import com.ezsoftware.ezplans.Model.DTO.DatosResumenPlanes;
 import com.ezsoftware.ezplans.Model.Entity.Planes;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -18,5 +19,9 @@ public interface PlanesRepository extends JpaRepository<Planes, Integer> {
             @Param("esAdmin") Boolean esAdmin
     );
 
+    @Query(value = "SELECT * FROM obtener_resumen_usuario(:idUsuario)", nativeQuery = true)
+    DatosResumenPlanes obtenerResumenUsuario(
+            @Param("idUsuario") Integer idUsuario
+    );
 
 }

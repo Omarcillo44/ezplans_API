@@ -11,13 +11,13 @@ import org.hibernate.annotations.ColumnDefault;
 @Table(name = "miembros_plan")
 public class MiembrosPlan {
     @Id
-    @ColumnDefault("nextval('miembros_plan_id_miembrosplan_seq')")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_miembrosplan", nullable = false)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_plan", nullable = false)
-    private Planes idPlan;
+    private Plan idPlan;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_usuario", nullable = false)

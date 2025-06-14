@@ -1,4 +1,4 @@
-package com.ezsoftware.ezplans.Model.DTO;
+package com.ezsoftware.ezplans.Model.DTO.VistaDetalladaPlan;
 
 public record DatosActividadPlan(
     int idActividad,

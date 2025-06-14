@@ -19,7 +19,7 @@ public class MiembrosActividad {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_actividad", nullable = false)
-    private Actividade idActividad;
+    private Actividad idActividad;
 
     @Column(name = "id_usuario", nullable = false)
     private Integer idUsuario;

@@ -1,8 +1,8 @@
-package com.ezsoftware.ezplans.Model.DTO;
+package com.ezsoftware.ezplans.Model.DTO.VistaDetalladaPlan;
 
 import java.math.BigDecimal;
 
-public record ResumenPlan(
+public record DatosResumenPlan(
         Integer idPlan,
         String titulo,
         String fecha,

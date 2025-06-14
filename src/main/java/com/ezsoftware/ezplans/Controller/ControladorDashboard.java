@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
                 @RequestParam(required = false) Boolean soloCompletos,
                 @RequestParam(required = false) Boolean esAdmin
         ) {
-            var resumenUsuario = planesRepository.obtenerResumenUsuario(idUsuario);
+            var resumenUsuario = planesRepository.obtenResumenDashboardPorUsuario(idUsuario);
             var planes = planesRepository.obtenerPlanesPorUsuario(idUsuario, soloCompletos, esAdmin);
             return ResponseEntity.ok(new DatosDashboard(resumenUsuario, planes));
         }

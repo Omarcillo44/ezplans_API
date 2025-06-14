@@ -1,9 +1,6 @@
 package com.ezsoftware.ezplans.Model.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
@@ -15,9 +12,9 @@ import java.time.LocalDate;
 @Setter
 @Entity
 @Table(name = "planes")
-public class Planes {
+public class Plan {
     @Id
-    @ColumnDefault("nextval('planes_id_plan_seq')")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_plan", nullable = false)
     private Integer id;
 
@@ -36,4 +33,15 @@ public class Planes {
     @Column(name = "estado_plan")
     private Boolean estadoPlan;
 
+    public Plan(String titulo, LocalDate fechaPlan, String detallesPlan) {
+        this.tituloPlan = titulo;
+        this.fechaPlan = fechaPlan;
+        this.detallesPlan = detallesPlan;
+        this.estadoPlan = false; // o true si deseas activarlo por defecto
+        this.gastoPlan = BigDecimal.ZERO; // inicia en cero
+    }
+
+    public Plan() {
+
+    }
 }

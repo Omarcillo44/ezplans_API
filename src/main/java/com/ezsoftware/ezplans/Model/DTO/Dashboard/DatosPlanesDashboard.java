@@ -1,6 +1,7 @@
-package com.ezsoftware.ezplans.Model.DTO;
+package com.ezsoftware.ezplans.Model.DTO.Dashboard;
 
-public record DatosPlanesUsuarioDashboard(
+public record DatosPlanesDashboard(
+        Integer idPlan,
         String titulo,
         String fecha,
         String gastoTotal,

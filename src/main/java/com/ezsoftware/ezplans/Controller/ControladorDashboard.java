@@ -1,7 +1,6 @@
 package com.ezsoftware.ezplans.Controller;
 
-import com.ezsoftware.ezplans.Model.DTO.DatosDashboard;
-import com.ezsoftware.ezplans.Model.DTO.DatosPlanesUsuarioDashboard;
+import com.ezsoftware.ezplans.Model.DTO.Dashboard.DatosDashboard;
 import com.ezsoftware.ezplans.Repository.PlanesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

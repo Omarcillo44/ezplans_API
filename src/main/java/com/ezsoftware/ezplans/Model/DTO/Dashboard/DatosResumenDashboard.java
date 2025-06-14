@@ -1,6 +1,6 @@
-package com.ezsoftware.ezplans.Model.DTO;
+package com.ezsoftware.ezplans.Model.DTO.Dashboard;
 
-public record DatosResumenPlanes(
+public record DatosResumenDashboard(
         Integer planesAdministrados,
         Integer planesMiembro,
         String deudasPendientes,

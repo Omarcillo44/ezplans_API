@@ -1,8 +1,8 @@
 package com.ezsoftware.ezplans.Controller;
 
 import com.ezsoftware.ezplans.Infra.Security.TokenService;
-import com.ezsoftware.ezplans.Model.DTO.DatosAutenticacionUsuario;
-import com.ezsoftware.ezplans.Model.DTO.DatosJWTToken;
+import com.ezsoftware.ezplans.Model.DTO.Acceso.DatosAutenticacionUsuario;
+import com.ezsoftware.ezplans.Model.DTO.Acceso.DatosJWTToken;
 import com.ezsoftware.ezplans.Model.Entity.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

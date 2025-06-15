@@ -29,7 +29,7 @@ public interface PlanesRepository extends JpaRepository<Plan, Integer> {
             @Param("idUsuario") Integer idUsuario
     );
 
-    @Query(value = "SELECT * FROM obtener_resumen_plan(1)", nativeQuery = true)
+    @Query(value = "SELECT * FROM obtener_resumen_plan(:idPlan)", nativeQuery = true)
     DatosResumenPlan obtenResumenPorPlan(@Param("idPlan") Integer idPlan);
 
     @Query(value = "SELECT * FROM obtener_actividades_por_plan(:idPlan)", nativeQuery = true)
@@ -37,9 +37,6 @@ public interface PlanesRepository extends JpaRepository<Plan, Integer> {
 
     @Query(value = "SELECT * FROM obtener_resumen_miembros_plan(:idPlan)", nativeQuery = true)
     List<DatosResumenMiembrosPlan> obtenResumenPorMiembrosDelPlan(@Param("idPlan") Integer idPlan);
-
-    @Query(value = "SELECT * FROM obtener_deudas_por_plan(:idPlan)", nativeQuery = true)
-    List<DatosDeudasPorPlan> obtenResumenDeudasPorPlan(@Param("idPlan") Integer idPlan);
 
     Object findPlanById(Integer id);
 }

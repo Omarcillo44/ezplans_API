@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Table(name = "deudas")
 public class Deuda {
     @Id
-    @ColumnDefault("nextval('deudas_id_deuda_seq')")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_deuda", nullable = false)
     private Integer id;
 

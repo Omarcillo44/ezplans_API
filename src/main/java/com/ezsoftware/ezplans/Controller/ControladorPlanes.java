@@ -1,17 +1,16 @@
 package com.ezsoftware.ezplans.Controller;
 
-import com.ezsoftware.ezplans.Model.DTO.DatosNuevoPlan;
-import com.ezsoftware.ezplans.Model.DTO.DatosMiembrosNuevoPlan;
+import com.ezsoftware.ezplans.Model.DTO.NuevoPlan.DatosNuevoPlan;
+import com.ezsoftware.ezplans.Model.DTO.NuevoPlan.DatosMiembrosNuevoPlan;
 import com.ezsoftware.ezplans.Model.DTO.VistaDetalladaPlan.*;
 import com.ezsoftware.ezplans.Model.Entity.MiembrosPlan;
 import com.ezsoftware.ezplans.Model.Entity.Plan;
 import com.ezsoftware.ezplans.Model.Entity.Usuario;
-import com.ezsoftware.ezplans.Repository.ActividadesRepository;
+import com.ezsoftware.ezplans.Repository.DeudasRepository;
 import com.ezsoftware.ezplans.Repository.MiembrosPlanRepository;
 import com.ezsoftware.ezplans.Repository.PlanesRepository;
 import com.ezsoftware.ezplans.Repository.UsuarioRepository;
 import jakarta.transaction.Transactional;
-import jdk.swing.interop.SwingInterOpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +29,8 @@ public class ControladorPlanes {
     private UsuarioRepository usuarioRepository;
     @Autowired
     private MiembrosPlanRepository miembrosPlanRepository;
+    @Autowired
+    private DeudasRepository deudasRepository;
 
     @Transactional
     @PostMapping("/nuevo_plan")
@@ -78,7 +79,7 @@ public class ControladorPlanes {
         DatosResumenPlan resumenPlan = planesRepository.obtenResumenPorPlan(idPlan);
         List<DatosActividadPlan> resumenActividadesPlan = planesRepository.obtenResumenActividadesPorPlan(idPlan);
         List<DatosResumenMiembrosPlan> resumenMiembrosPlan = planesRepository.obtenResumenPorMiembrosDelPlan(idPlan);
-        List<DatosDeudasPorPlan> resumenDeudasPlan = planesRepository.obtenResumenDeudasPorPlan(idPlan);
+        List<DatosDeudasPorPlan> resumenDeudasPlan = deudasRepository.obtenResumenDeudasPorPlan(idPlan);
 
         DatosVistaDetalladaPlan vistaDetallada = new DatosVistaDetalladaPlan
                 (

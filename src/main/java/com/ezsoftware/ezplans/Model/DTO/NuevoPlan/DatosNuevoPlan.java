@@ -1,4 +1,4 @@
-package com.ezsoftware.ezplans.Model.DTO;
+package com.ezsoftware.ezplans.Model.DTO.NuevoPlan;
 
 import java.time.LocalDate;
 import java.util.List;

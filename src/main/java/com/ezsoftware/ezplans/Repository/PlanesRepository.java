@@ -2,6 +2,7 @@ package com.ezsoftware.ezplans.Repository;
 
 import com.ezsoftware.ezplans.Model.DTO.Dashboard.DatosPlanesDashboard;
 import com.ezsoftware.ezplans.Model.DTO.Dashboard.DatosResumenDashboard;
+import com.ezsoftware.ezplans.Model.DTO.NuevaActividad.Contactos.DatosUsuarioEnPlan;
 import com.ezsoftware.ezplans.Model.DTO.VistaDetalladaPlan.DatosActividadPlan;
 import com.ezsoftware.ezplans.Model.DTO.VistaDetalladaPlan.DatosResumenMiembrosPlan;
 import com.ezsoftware.ezplans.Model.DTO.VistaDetalladaPlan.DatosDeudasPorPlan;
@@ -38,5 +39,4 @@ public interface PlanesRepository extends JpaRepository<Plan, Integer> {
     @Query(value = "SELECT * FROM obtener_resumen_miembros_plan(:idPlan)", nativeQuery = true)
     List<DatosResumenMiembrosPlan> obtenResumenPorMiembrosDelPlan(@Param("idPlan") Integer idPlan);
 
-    Object findPlanById(Integer id);
 }

@@ -27,7 +27,7 @@ public class Pago {
     @Column(name = "forma_pago")
     private Boolean formaPago;
 
-    @Column(name = "comprobante_pago", length = Integer.MAX_VALUE)
+    @Column(name = "comprobante_pago")
     private String comprobantePago;
 
 }

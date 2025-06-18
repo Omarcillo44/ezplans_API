@@ -1,5 +1,6 @@
 package com.ezsoftware.ezplans.Controller;
 
+import com.ezsoftware.ezplans.Model.DTO.NuevaActividad.Contactos.DatosUsuarioEnPlan;
 import com.ezsoftware.ezplans.Model.DTO.NuevoPlan.DatosNuevoPlan;
 import com.ezsoftware.ezplans.Model.DTO.NuevoPlan.DatosMiembrosNuevoPlan;
 import com.ezsoftware.ezplans.Model.DTO.VistaDetalladaPlan.*;
@@ -88,4 +89,14 @@ public class ControladorPlanes {
 
         return ResponseEntity.ok(vistaDetallada);
     }
+
+    @GetMapping("/miembros")
+    public ResponseEntity<List<DatosUsuarioEnPlan>> obtenerUsuariosDelPlan(@RequestParam Integer idPlan) {
+        List<DatosUsuarioEnPlan> usuarios = miembrosPlanRepository.obtenerMiembrosPorPlan(idPlan);
+        if (usuarios.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+        return ResponseEntity.ok(usuarios);
+    }
+
 }

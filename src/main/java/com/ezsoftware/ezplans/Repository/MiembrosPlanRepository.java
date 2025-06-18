@@ -1,5 +1,6 @@
 package com.ezsoftware.ezplans.Repository;
 
+import com.ezsoftware.ezplans.Model.DTO.NuevaActividad.Contactos.DatosUsuarioEnPlan;
 import com.ezsoftware.ezplans.Model.Entity.MiembrosPlan;
 import com.ezsoftware.ezplans.Model.Entity.Plan;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,4 +14,8 @@ public interface MiembrosPlanRepository extends JpaRepository<MiembrosPlan, Inte
 
         @Query("SELECT mp.idUsuario.id FROM MiembrosPlan mp WHERE mp.idPlan.id = :idPlan")
         List<Integer> findUsuariosPorPlan(@Param("idPlan") Integer idPlan);
+
+        @Query(value = "SELECT * FROM obten_miembros_plan(:idPlan)", nativeQuery = true)
+        List<DatosUsuarioEnPlan> obtenerMiembrosPorPlan(@Param("idPlan") Integer idPlan);
+
 }

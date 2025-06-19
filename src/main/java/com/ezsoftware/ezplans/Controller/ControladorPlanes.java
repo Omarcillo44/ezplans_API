@@ -1,5 +1,7 @@
 package com.ezsoftware.ezplans.Controller;
 
+import com.ezsoftware.ezplans.Model.DTO.EditarPlan.DatosEditarPlan;
+import com.ezsoftware.ezplans.Model.DTO.EditarPlan.DatosVistaEditarPlan;
 import com.ezsoftware.ezplans.Model.DTO.NuevaActividad.Contactos.DatosUsuarioEnPlan;
 import com.ezsoftware.ezplans.Model.DTO.NuevoPlan.DatosNuevoPlan;
 import com.ezsoftware.ezplans.Model.DTO.NuevoPlan.DatosMiembrosNuevoPlan;
@@ -41,7 +43,9 @@ public class ControladorPlanes {
         Plan nuevoPlan = new Plan();
         nuevoPlan.setTituloPlan(planRequest.titulo());
         nuevoPlan.setFechaPlan(planRequest.fechaPlan());
-        nuevoPlan.setDetallesPlan(planRequest.detallesPlan());
+        if (planRequest.detallesPlan() != null) {
+            nuevoPlan.setDetallesPlan(planRequest.detallesPlan());
+        }
         nuevoPlan.setEstadoPlan(false);
         nuevoPlan.setGastoPlan(BigDecimal.ZERO);
 
@@ -98,5 +102,52 @@ public class ControladorPlanes {
         }
         return ResponseEntity.ok(usuarios);
     }
+
+    @DeleteMapping("/eliminar")
+    public ResponseEntity<String> eliminarPlan(@RequestParam Integer idPlan) {
+        try {
+            planesRepository.eliminarPlanCompleto(idPlan);
+            return ResponseEntity.ok("Plan eliminado exitosamente");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error al eliminar el plan: " + e.getMessage());
+        }
+    }
+
+    @PutMapping("/editar")
+    public ResponseEntity<String> actualizarPlan(@RequestBody DatosEditarPlan datos) {
+        try {
+            planesRepository.actualizarPlan(
+                    datos.idPlan(),
+                    datos.titulo(),
+                    datos.detalles(),
+                    datos.fecha()
+            );
+            return ResponseEntity.ok("Plan actualizado correctamente");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error al actualizar el plan: " + e.getMessage());
+        }
+    }
+
+
+
+    @GetMapping("/vistaEditarPlan")
+    public ResponseEntity<DatosVistaEditarPlan> vistaEditarPlan(@RequestParam Integer idPlan) {
+        try {
+            DatosVistaEditarPlan nuevosDatos = planesRepository.obtenerDatosVistaEditar(idPlan);
+
+            if (nuevosDatos == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            }
+
+            return ResponseEntity.ok(nuevosDatos);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(null);
+        }
+    }
+
+
 
 }
